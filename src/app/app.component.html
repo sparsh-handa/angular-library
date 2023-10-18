@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <!-- <img  class="src" src="https://logo.com/image-cdn/images/kts928pd/production/60e9863150b0f2922c396986447ff996153f127e-336x330.png?w=1080&q=72" alt="abc"> -->
+      
+      <h1 class="heading">
+        
+        Product</h1>
+      <div class="row">
+        <div *ngFor="let book of books" class="col-lg-4">
+          <app-card [book]="book" (addProduct)="insertProduct($event) "></app-card>
+        </div> 
+      </div>
+    </div>
+    <div class="col-lg-4" id="new">
+      <h1 class="sub">Cart</h1>
+      <ol class="list-group list-group-numbered">
+        <app-cart-item 
+        *ngFor="let item of cartItems" 
+        [item]="item" 
+        (removeFromCart)="removeItem($event)"
+        (cartTotal)="updateTotal($event)"
+        >
+        </app-cart-item> 
+      </ol>
+      <h1 class="title">Total: EUR {{total}}</h1>
+    </div>
+  </div>
+</div>
